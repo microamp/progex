@@ -2,6 +2,7 @@
 # Extend the Times module with a triple function that multiplies its parameter by three.
 # Exercise: ModulesAndFunctions-2
 # Run the result in iex. Use both techniques to compile the file.
+# 1. `iex chap06_times.ex`, 2. c "chap06_times.ex"
 # Exercise: ModulesAndFunctions-3
 # Add a quadruple function (Maybe it could call the double function....)
 
