@@ -13,23 +13,23 @@
 # 273
 
 defmodule Chop do
-  def mid(x, y) do
-    x + div(y - x, 2)
+  def guess(n, x.._, mid) when n < mid do
+    guess n, x..mid
   end
 
-  def guess(n, x..y) when n == x or n == y do
+  def guess(n, _..y, mid) when n > mid do
+    guess n, mid..y
+  end
+
+  def guess(n, x..y, mid) do
     n
   end
 
   def guess(n, x..y) do
-    mid = mid x, y
+    mid = x + div(y - x, 2)
     IO.puts "Is it #{mid}"
 
-    if n < mid do
-      guess n, x..mid
-    else
-      guess n, mid..y
-    end
+    guess n, x..y, mid
   end
 end
 
