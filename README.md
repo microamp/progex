@@ -78,7 +78,7 @@ len.("abcde") # => 5 (note the dot)
 
 # anonymous function (with syntax sugar)
 add = &(&1 + &2)
-add.(1, 10) # => 11 (againt, note the dot)
+add.(1, 10) # => 11 (again, note the dot)
 
 # ---------------
 # ** Functions **
@@ -102,7 +102,10 @@ Arithmetic.multiply(10) # => 20 (without optional arguments)
 # ---------------
 # ** Recursion **
 # ---------------
-# There are no imperative looping constructs like for/while-loops in Elixir. Together with pattern matching, recursive functions are a very powerful tool. Note to self: Recursion is cool, but do *not* overuse it. Use Enum/Stream where appropriate.
+# There are no imperative looping constructs like for/while-loops in Elixir.
+# Together with pattern matching, recursive functions are a very powerful tool.
+# Note to self: Recursion is cool, but do *not* overuse it. Use Enum/Stream
+# when it's more appropriate to use them than recursion.
 
 defmodule MyList do
   # base case
@@ -116,12 +119,15 @@ end
 
 MyList.sum([1, 2, 3, 4]) # => 10
 
-# The above example can be easily changed to one that uses a tail-call. Hint: Use an additional argument as an accumulator.
+# The above example can be easily changed to one that uses a tail-call.
+# Hint: Use an additional argument as an accumulator.
 
 # ------------
 # ** Struct **
 # ------------
-# Useful to define a behaviour. Note to self: Do *not* use structs like how you would define classes in OO. Can be easily abused if not careful especially coming from an OO background.
+# Useful to define a behaviour. Note to self: Do *not* use structs like
+# how you would define classes in OO. Can be easily abused if not careful
+# especially coming from an OO background.
 
 defmodule Person do
   defstruct first_name: "", last_name: "", age: 0
@@ -176,7 +182,8 @@ Enum.reduce([1, 2, 3, 4], &(&1 + &2)) # => 10
 # -------------------
 # ** Comprehension **
 # -------------------
-# Fun little syntax sugar. Combines map and filter in the same construct. Note to self: Think of the Python list comprehension.
+# Fun little syntax sugar. Combines map and filter in the same construct.
+# Note to self: Think of the Python list comprehension.
 
 for x <- 1..10, rem(x, 2) == 0, do: x * 2 # => [4, 8, 12, 16, 20]
 
