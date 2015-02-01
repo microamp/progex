@@ -1,0 +1,51 @@
+* syntax sugars
+** lists
+e.g. [1, 2, 3]
+** tuples
+e.g. {1, 2, 3}
+** keyword lists (ordered, duplicate keys allowed)
+e.g.
+iex(118)> [{:a, 2}, {:b, 3}, {:a, 100}]
+[a: 2, b: 3, a: 100]
+** maps (unordered, no duplicate keys, slow)
+e.g.
+iex(123)> d = %{one: 1, two: 2}
+%{one: 1, two: 2}
+iex(124)> d[:two]
+2
+iex(148)> %{1 => "one", 2 => "two"}
+%{1 => "one", 2 => "two"}
+** HashDict (unordered, no duplicate keys, fast with large data set)
+e.g.
+iex(132)> [one: 1, two: 2] |> Enum.into HashDict.new
+#HashDict<[two: 2, one: 1]>
+** keyword arguments to functions (\\)
+e.g. def func(a, b, c \\ 3, d \\ 4) do ... end
+** `for`
+e.g.
+iex(228)> for num <- [1, 2, 3, 4, 5], rem(num, 2) == 0, do: num * 2
+[4, 8]
+** control flows
+*** single-line if-else expression
+e.g. if pred, do: "yes", else: "no"
+*** cond
+e.g.
+x = 12
+answer =
+  cond do
+  x == 10 -> "x is #{x}"
+  true -> "x is something else"
+end
+** directives (import some, only: [thing: 2, thing: 3])
+e.g. import List, only: [flatten: 1, duplicate: 2]
+e.g. import List, except: [flatten: 1, duplicate: 2]
+** directives (alias some.thing, as: some_alias)
+e.g. alias Mix.Tasks.Doctest, as: Doctest
+** directives (require): @name value
+e.g. @author "james sangho nah"
+** raise exception
+e.g. raise "some error message"
+** concat lists
+e.g. [1, 2, 3] ++ [4, 5, 6]
+** flatten nested lists
+e.g. List.flatten([[[[[1]], [2, 3]], [3,4,5]]]) # [1, 2, 3, 3, 4, 5]
