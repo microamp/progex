@@ -158,7 +158,7 @@ cond do
   true -> "#{x} is odd"
 end # => "9 is odd"
 
-n# case
+# case
 case x do
   0 -> "zero!"
   2 -> "two!"
