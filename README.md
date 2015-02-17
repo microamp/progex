@@ -207,5 +207,30 @@ for x <- 1..10, rem(x, 2) == 0, do: x * 2 # => [4, 8, 12, 16, 20]
 # ----------------------------------
 # ** Concurrency with Actor Model **
 # ----------------------------------
-# TODO:
+defmodule HelloWorld do
+  def greet do
+    receive do
+      {sender, name} ->
+        send sender, {:ok, "hello #{name}"}
+    end
+  end
+end
+
+# current process
+IO.puts "current process:"
+IO.inspect self # => e.g. #PID<0.49.0>
+
+# spanwed process
+pid = spawn HelloWorld, :greet, []
+IO.puts "spawned process:"
+IO.inspect pid # => e.g. #PID<0.55.0>
+
+# send message to spawned processes
+send pid, {self, "world"}
+
+# receive message from spawned process
+receive do
+  {:ok, msg} ->
+    IO.puts "message received: #{msg}" # => "message received: hello world"
+end
 ```
